@@ -1,0 +1,7 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+    <div class="list-group">
+        <a routerLink="/directory" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-directory"></i>&nbsp;{{ 'Directory' | translate }}
+        </a>
+    </div>
+</nav>
