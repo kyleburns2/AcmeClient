@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './shared';
 import { CommonModule } from '@angular/common';
-
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
   /* for development
