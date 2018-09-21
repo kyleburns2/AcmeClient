@@ -1,7 +1,11 @@
 {
     "MainTitle" : "Acme13",
+    "Login": {
+        "LoginButton": "Log In"
+    },
     "ForgotPassword" : {
-        "ForgotPasswordTitle": "Change Password"
+        "ForgotPasswordTitle": "Change Password",
+        "ForgotPasswordLink": "Forgot Password"
     },
     "Header" : {
         "ProfileTitle": "Profile",
@@ -11,7 +15,9 @@
         "DirectoryTitle": "Directory"
     },
     "Applications" : {
-        "ApplicationsTitle": "Applications"
+        "ApplicationsTitle": "Applications",
+        "RequestApplicationTitle": "Request Application",
+        "DescriptionTitle": "Description"
     },
     "Profile" : {
         "ProfileTitle": "Profile"

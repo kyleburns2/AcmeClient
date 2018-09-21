@@ -1,3 +1,17 @@
 .container {
     max-width: 1700px;
 }
+.card-height {
+    min-height: 250px;
+    vertical-align: middle;
+}
+.add-card {
+    padding: 100px;
+}
+.add-card-btn {
+    width: 100px;
+    height: 50px;
+}
+.add-card-icon {
+    vertical-align: -webkit-baseline-middle;
+}

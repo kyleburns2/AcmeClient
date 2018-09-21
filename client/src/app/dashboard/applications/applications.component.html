@@ -10,10 +10,20 @@
         <div class="card-header">
           {{ application.name }}
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Description</h5>
+        <div class="card-body card-height">
+          <h5 class="card-title">{{ 'Applications.DescriptionTitle' | translate }}</h5>
           <p class="card-text">{{ application.description }}</p>
-          <a class="btn btn-primary">Log on</a>
+          <a class="btn btn-primary text-white">{{ 'Login.LoginButton' | translate }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card text-white bg-primary mb-3 text-center">
+        <div class="card-header">
+            {{ 'Applications.RequestApplicationTitle' | translate }}
+        </div>
+        <div class="card-body card-height add-card">
+          <a class="btn btn-success add-card-btn"><i class="fa fa-plus add-card-icon"></i></a>
         </div>
       </div>
     </div>

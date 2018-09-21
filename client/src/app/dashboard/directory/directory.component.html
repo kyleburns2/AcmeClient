@@ -7,7 +7,7 @@
     <div class="row text-center">
         <div class="col">
             <p-dataView #dv [value]="employees" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="title,department,firstName,lastName,officeLocation"
-                [paginator]="true" [rows]="10">
+                [paginator]="true" [rows]="12" [rowsPerPageOptions]="[12,16,20]">
                 <p-header>
                     <div class="ui-helper-clearfix">
                         <div class="ui-g">

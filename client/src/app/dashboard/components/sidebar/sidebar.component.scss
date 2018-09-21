@@ -126,6 +126,11 @@ $topnav-background-color: #222;
         }
     }
 }
+.sidebar-footer {
+    position:absolute; 
+    bottom: 0; 
+    width: 100%;
+}
 @media screen and (max-width: 992px) {
     .sidebar {
         top: 54px;
