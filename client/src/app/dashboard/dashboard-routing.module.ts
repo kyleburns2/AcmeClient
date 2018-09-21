@@ -9,6 +9,8 @@ const routes: Routes = [
         children: [
             { path: '', redirectTo: 'directory' },
             { path: 'directory', loadChildren: './directory/directory.module#DirectoryModule' },
+            { path: 'applications', loadChildren: './applications/applications.module#ApplicationsModule' },
+            { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
         ]
     }
 ];

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="col">
+      <h1>{{ 'Applications.ApplicationsTitle' | translate }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4" *ngFor="let application of applications">
+      <div [ngClass]="getRandomCardClass(application.departmentID)">
+        <div class="card-header">
+          {{ application.name }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Description</h5>
+          <p class="card-text">{{ application.description }}</p>
+          <a class="btn btn-primary">Log on</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -7,6 +6,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './shared';
 import { CommonModule } from '@angular/common';
+import { DataViewModule } from 'primeng/dataview';
+import { DropdownModule } from 'primeng/dropdown';
+import { PanelModule } from 'primeng/panel';
+import { DialogModule } from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule } from 'primeng/button';
+
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
   /* for development
@@ -22,8 +28,14 @@ export const createTranslateLoader = (http: HttpClient) => {
   declarations: [AppComponent],
   imports: [
     CommonModule,
-    BrowserModule,
     AppRoutingModule,
+    DataViewModule,
+    PanelModule,
+    DialogModule,
+    DropdownModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    PanelModule,
     HttpClientModule,
     TranslateModule.forRoot({
         loader: {

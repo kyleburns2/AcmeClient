@@ -1,7 +1,118 @@
 <div class="container">
-  <div class="row text-center">
-    <div class="col">
-      <h1>Directory</h1>
+    <div class="row text-center">
+        <div class="col">
+            <h1>{{ 'Directory.DirectoryTitle' | translate }}</h1>
+        </div>
     </div>
-  </div>
+    <div class="row text-center">
+        <div class="col">
+            <p-dataView #dv [value]="employees" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="title,department,firstName,lastName,officeLocation"
+                [paginator]="true" [rows]="10">
+                <p-header>
+                    <div class="ui-helper-clearfix">
+                        <div class="ui-g">
+                            <div class="ui-g-6 ui-md-4 form-inline">
+                                <i class="fa fa-search"></i>
+                                <input class="form-control pInputText form-control-sm ml-3" style="width:85%;" type="search"
+                                    (keyup)="dv.filter($event.target.value)" placeholder="Search by name, title, department, or office location"
+                                    aria-label="Search">
+                            </div>
+                            <div class="ui-g-12 ui-md-4 text-left">
+                                <p-dropdown [dropdownIcon]="dropdownTrigIcon" [options]="sortOptions" [(ngModel)]="sortKey"
+                                    placeholder="Choose a field to sort by" (onChange)="onSortChange($event)"
+                                    [autoWidth]="false" [style]="{'min-width':'20em'}"></p-dropdown>
+                            </div>
+                            <div class="ui-g-6 ui-md-4 text-right">
+                                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                            </div>
+                        </div>
+                    </div>
+                </p-header>
+                <p-footer>
+                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                </p-footer>
+                <ng-template let-employee pTemplate="listItem">
+                    <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                        <div class="ui-g-12 ui-md-3" style="text-align:center">
+                            <img src="assets/images/blank-profile.png" style="width:205px;height:215px;">
+                        </div>
+                        <div class="ui-g-12 ui-md-4 employee-details">
+                            <div class="ui-g text-left">
+                                <div class="ui-g-6 ui-sm-6">First Name: </div>
+                                <div class="ui-g-6 ui-sm-6"><b>{{employee.firstName}}</b></div>
+
+                                <div class="ui-g-6 ui-sm-6">Last Name: </div>
+                                <div class="ui-g-6 ui-sm-6"><b>{{employee.lastName}}</b></div>
+
+                                <div class="ui-g-6 ui-sm-6">Email: </div>
+                                <div class="ui-g-6 ui-sm-6"><b>{{employee.email}}</b></div>
+
+                                <div class="ui-g-6 ui-sm-6">Phone Number: </div>
+                                <div class="ui-g-6 ui-sm-6"><b>{{employee.phoneNumber}}</b></div>
+
+                                <div class="ui-g-6 ui-sm-6">Title: </div>
+                                <div class="ui-g-6 ui-sm-6"><b>{{employee.title}}</b></div>
+                            </div>
+                        </div>
+                        <div class="ui-g-12 ui-md-4 employee-details">
+                            <div class="ui-g text-left">
+                                <div class="ui-g-6 ui-sm-6">Dapartment: </div>
+                                <div class="ui-g-6 ui-sm-6"><b>{{employee.department}}</b></div>
+
+                                <div class="ui-g-6 ui-sm-6">Office Location: </div>
+                                <div class="ui-g-6 ui-sm-6"><b>{{employee.officeLocation}}</b></div>
+                            </div>
+                        </div>
+                        <div class="ui-g-12 ui-md-1 search-icon">
+                            <button pButton type="button" icon="fa fa-search" (click)="selectEmployee($event, employee)"></button>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template let-employee pTemplate="gridItem">
+                    <div style="padding:.5em" class="ui-g-12 ui-md-3">
+                        <p-panel [header]="employee.firstName + ' ' + employee.lastName" [style]="{'text-align':'center'}">
+                            <img src="assets/images/blank-profile.png" style="width:180px;height:200px;padding:5px;">
+                            <div class="employee-detail">{{employee.title}}, {{employee.department}} -
+                                {{employee.officeLocation}}</div>
+                            <div class="employee-contact">{{employee.email}}</div>
+                            <div class="employee-contact">{{employee.phoneNumber}}</div>
+                            <hr class="ui-widget-content" style="border-top:0">
+                            <button pButton type="button" icon="fa fa-search" (click)="selectEmployee($event, employee)"></button>
+                        </p-panel>
+                    </div>
+                </ng-template>
+            </p-dataView>
+            <p-dialog header="Employee Details" width="415" styleClass="employee-dialog" [(visible)]="displayDialog"
+                [responsive]="true" showEffect="fade" [modal]="true" (onAfterHide)="onDialogHide()">
+                <div class="ui-g text-left" *ngIf="selectedEmployee">
+                    <div class="ui-g-12" style="text-align:center">
+                        <img src="assets/images/blank-profile.png" style="width:180px;height:200px;padding:5px;">
+                    </div>
+                    <div class="ui-g-6">First Name: </div>
+                    <div class="ui-g-6">{{selectedEmployee.firstName}}</div>
+
+                    <div class="ui-g-6">Last Name: </div>
+                    <div class="ui-g-6">{{selectedEmployee.lastName}}</div>
+
+                    <div class="ui-g-6">Title: </div>
+                    <div class="ui-g-6">{{selectedEmployee.title}}</div>
+
+                    <div class="ui-g-6">Department: </div>
+                    <div class="ui-g-6">{{selectedEmployee.department}}</div>
+
+                    <div class="ui-g-6">Office Location: </div>
+                    <div class="ui-g-6">{{selectedEmployee.officeLocation}}</div>
+
+                    <div class="ui-g-6">Email: </div>
+                    <div class="ui-g-6">{{selectedEmployee.email}}</div>
+
+                    <div class="ui-g-6">Phone Number: </div>
+                    <div class="ui-g-6">{{selectedEmployee.phoneNumber}}</div>
+                    <div class="ui-g-12" style="text-align:center">
+                        <button type="button" class="btn btn-primary" (click)="closeDialog()">Close</button>
+                    </div>
+                </div>
+            </p-dialog>
+        </div>
+    </div>
 </div>

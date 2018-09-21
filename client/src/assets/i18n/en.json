@@ -1,3 +1,19 @@
 {
-    "Directory": "Directory"
+    "MainTitle" : "Acme13",
+    "ForgotPassword" : {
+        "ForgotPasswordTitle": "Change Password"
+    },
+    "Header" : {
+        "ProfileTitle": "Profile",
+        "LogOut": "Log Out"
+    },
+    "Directory" : {
+        "DirectoryTitle": "Directory"
+    },
+    "Applications" : {
+        "ApplicationsTitle": "Applications"
+    },
+    "Profile" : {
+        "ProfileTitle": "Profile"
+    }
 }
